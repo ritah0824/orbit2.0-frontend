@@ -2,6 +2,7 @@ let tasks = [];
 let current = 0;
 let handle = "";
 
+// ✅ Your Railway backend URL
 const BASE_API = "https://orbit20-production-9e31.up.railway.app"
 
 function clickAdd() {
@@ -43,7 +44,7 @@ function existTask() {
     return exist;
 }
 
-// ✅ NEW FUNCTION: Get current active task
+// ✅ NEW FUNCTION: Get current active task (first incomplete one)
 function getCurrentTask() {
     for (let i = 0; i < tasks.length; i++) {
         if (tasks[i].finish < tasks[i].num) {
@@ -61,11 +62,11 @@ function updateCurrentTaskDisplay() {
     if (currentTask) {
         // Show task name with progress
         displayElement.innerHTML = `${currentTask.name} (${currentTask.finish}/${currentTask.num})`;
-        displayElement.classList.remove('hidden');
+        displayElement.style.display = "block";
     } else {
-        // Show default message when no tasks
-        displayElement.innerHTML = "CREATE&nbsp;A&nbsp;NEW&nbsp;TASK!";
-        displayElement.classList.remove('hidden');
+        // Hide completely when no tasks
+        displayElement.innerHTML = "";
+        displayElement.style.display = "none";
     }
 }
 
