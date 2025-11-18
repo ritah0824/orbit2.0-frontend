@@ -23,17 +23,6 @@
         .spotify-player.active {
             display: block;
         }
-
-        /* Style for current task display */
-        #current-task-display {
-            font-size: 2.94vh;
-            letter-spacing: 0.26vh;
-            min-height: 3vh; /* Reserve space even when empty */
-        }
-
-        #current-task-display.hidden {
-            display: none;
-        }
     </style>
     <script src="./js/task.js"></script>
 </head>
@@ -43,8 +32,8 @@
         <div class="top">POMODORO FOCUS</div>
         <div class="main" style="display: flex; width: 100%;margin-top: 8vh;height: 68vh;">
             <div class="main-left" style="width: 50%; border-right: 5px solid #FFFFFF; padding: 4.09vh 0 4.09vh 15vh;">
-                <!-- ✅ CHANGED: Made this dynamic -->
-                    <div id="current-task-display" style="font-size: 2.94vh; letter-spacing: 0.26vh; display: none;"></div>
+                <!-- ✅ CHANGED: Use visibility instead of display to reserve space -->
+                <div id="current-task-display" style="font-size: 2.94vh; letter-spacing: 0.26vh; visibility: hidden; min-height: 3vh;"></div>
                 
                 <div class="time">
                     <div id="time-minute-1" class="time-num">2</div>
@@ -97,7 +86,7 @@
 
     <script src="./js/index.js"></script>
     <script>
-        // NASA, Quotes, Spotify API code stays the same...
+        // Your existing NASA, Spotify, Quote API code stays exactly the same...
         let usedDates = [];
         let tracksUri = "";
         let accessToken = "";
