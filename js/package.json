@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Orbit Pomodoro Focus Timer - Frontend",
   "scripts": {
-    "start": "npx static-web-server --config-file static-web-server.toml"
+    "start": "npx serve -s . -l $PORT"
   },
   "keywords": ["pomodoro", "frontend"],
   "author": "ritah0824",
