@@ -2,7 +2,6 @@ let tasks = [];
 let current = 0;
 let handle = "";
 
-// ✅ UPDATED: Your Railway backend URL
 const BASE_API = "https://orbit20-production-9e31.up.railway.app"
 
 function clickAdd() {
@@ -44,6 +43,32 @@ function existTask() {
     return exist;
 }
 
+// ✅ NEW FUNCTION: Get current active task
+function getCurrentTask() {
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].finish < tasks[i].num) {
+            return tasks[i];
+        }
+    }
+    return null;
+}
+
+// ✅ NEW FUNCTION: Update current task display
+function updateCurrentTaskDisplay() {
+    const currentTask = getCurrentTask();
+    const displayElement = document.querySelector("#current-task-display");
+    
+    if (currentTask) {
+        // Show task name with progress
+        displayElement.innerHTML = `${currentTask.name} (${currentTask.finish}/${currentTask.num})`;
+        displayElement.classList.remove('hidden');
+    } else {
+        // Show default message when no tasks
+        displayElement.innerHTML = "CREATE&nbsp;A&nbsp;NEW&nbsp;TASK!";
+        displayElement.classList.remove('hidden');
+    }
+}
+
 function getTasks() {
     fetch(BASE_API + "/getTasks")
         .then(response => response.json())
@@ -51,6 +76,7 @@ function getTasks() {
             tasks = res.data;
             handle = "";
             renderTasksDom();
+            updateCurrentTaskDisplay(); // ✅ ADDED
         })
         .catch(error => {
             console.error('Error fetching tasks:', error);
@@ -66,6 +92,7 @@ function addTask(name, num) {
                 tasks = res.data;
                 handle = "";
                 renderTasksDom();
+                updateCurrentTaskDisplay(); // ✅ ADDED
             })
             .catch(error => {
                 console.error('Error adding task:', error);
@@ -101,6 +128,7 @@ function updateTask() {
                 tasks = res.data;
                 handle = "";
                 renderTasksDom();
+                updateCurrentTaskDisplay(); // ✅ ADDED
             })
             .catch(error => {
                 console.error('Error deleting task:', error);
@@ -113,6 +141,7 @@ function updateTask() {
                 tasks = res.data;
                 handle = "";
                 renderTasksDom();
+                updateCurrentTaskDisplay(); // ✅ ADDED
             })
             .catch(error => {
                 console.error('Error updating task:', error);
@@ -128,6 +157,7 @@ function deleteTask(id) {
             tasks = res.data;
             handle = "";
             renderTasksDom();
+            updateCurrentTaskDisplay(); // ✅ ADDED
         })
         .catch(error => {
             console.error('Error deleting task:', error);
@@ -142,6 +172,7 @@ function deleteAll() {
             tasks = res.data;
             handle = "";
             renderTasksDom();
+            updateCurrentTaskDisplay(); // ✅ ADDED
         })
         .catch(error => {
             console.error('Error deleting all tasks:', error);
