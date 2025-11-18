@@ -24,16 +24,36 @@
             display: block;
         }
 
-        /* ✅ NEW: Reserve space for task name - always visible but can be empty */
+        /* ✅ NEW: Bigger icons in task header */
+        .task-header-icons {
+            display: flex;
+            gap: 2vh;
+            align-items: center;
+        }
+
+        .delete-btn,
+        .add-btn {
+            width: 5vh !important;  /* Much bigger! */
+            height: 5vh !important;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .delete-btn:hover,
+        .add-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Reserve space for task name - always visible but can be empty */
         #current-task-display {
             font-size: 2.94vh;
             letter-spacing: 0.26vh;
-            min-height: 4vh; /* Reserve vertical space */
-            visibility: visible; /* Always take up space */
+            min-height: 4vh;
+            visibility: visible;
         }
 
         #current-task-display.empty {
-            opacity: 0; /* Hide text but keep the space */
+            opacity: 0;
         }
     </style>
     <script src="./js/task.js"></script>
@@ -44,7 +64,7 @@
         <div class="top">POMODORO FOCUS</div>
         <div class="main" style="display: flex; width: 100%;margin-top: 8vh;height: 68vh;">
             <div class="main-left" style="width: 50%; border-right: 5px solid #FFFFFF; padding: 4.09vh 0 4.09vh 15vh;">
-                <!-- ✅ CHANGED: Always visible, text appears when task exists -->
+                <!-- ✅ Task name display that reserves space -->
                 <div id="current-task-display" class="empty">&nbsp;</div>
                 
                 <div class="time">
@@ -55,18 +75,18 @@
                     <div id="time-second-2" class="time-num">0</div>
                 </div>
                 <div id="left-title" class="work">LEFT TO WORK!</div>
-                <!-- <div class="text">"<span id="quotes-content">Believe you can and you're halfway there.</span>" — <span id="quotes-author">Theodore Roosevelt</span></div> -->
                 <div class="btn">
                     <div class="btn-item" onclick="reset()">RESET</div>
                     <div id="btn-start" class="btn-item" onclick="startClick()">START</div>
                 </div>
             </div>
             <div class="main-right" style="width: 50%;padding: 0 15vh;">
-                <div style="display: flex;   margin-top: 4.1vh; justify-content: space-between;" id="task-top">
+                <!-- ✅ UPDATED: Bigger icons with better layout -->
+                <div style="display: flex; margin-top: 4.1vh; justify-content: space-between; align-items: center;" id="task-top">
                     <div style="font-size: 4.2vh; width: 14.56vh; letter-spacing: 0.26vh;">TASKS</div>
-                    <div style="margin-top: 2.5vh;">
-                        <img class="delete-btn" src="./images/delete.png" alt="" onclick="deleteAll()">
-                        <img class="add-btn" src="./images/add.png" alt="" onclick="clickAdd()">
+                    <div class="task-header-icons">
+                        <img class="delete-btn" src="./images/delete.png" alt="Delete all tasks" onclick="deleteAll()">
+                        <img class="add-btn" src="./images/add.png" alt="Add new task" onclick="clickAdd()">
                     </div>
                 </div>
                 <div id="task-list" style="font-size: 3.94vh;letter-spacing: 0.3vh; margin-top: 5vh;"></div>
