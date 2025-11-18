@@ -24,27 +24,27 @@
             display: block;
         }
 
-        /* ✅ NEW: Bigger icons in task header */
+        /* ✅ UPDATED: Smaller icons with tighter spacing */
         .task-header-icons {
             display: flex;
-            gap: 2vh;
+            gap: 1.5vh;  /* Closer together */
             align-items: center;
         }
 
         .delete-btn,
         .add-btn {
-            width: 5vh !important;  /* Much bigger! */
-            height: 5vh !important;
+            width: 3.5vh !important;   /* Smaller - between original and too big */
+            height: 3.5vh !important;
             cursor: pointer;
             transition: transform 0.2s ease;
         }
 
         .delete-btn:hover,
         .add-btn:hover {
-            transform: scale(1.1);
+            transform: scale(1.15);  /* Slight zoom on hover */
         }
 
-        /* Reserve space for task name - always visible but can be empty */
+        /* Reserve space for task name */
         #current-task-display {
             font-size: 2.94vh;
             letter-spacing: 0.26vh;
@@ -64,7 +64,7 @@
         <div class="top">POMODORO FOCUS</div>
         <div class="main" style="display: flex; width: 100%;margin-top: 8vh;height: 68vh;">
             <div class="main-left" style="width: 50%; border-right: 5px solid #FFFFFF; padding: 4.09vh 0 4.09vh 15vh;">
-                <!-- ✅ Task name display that reserves space -->
+                <!-- ✅ Task name display -->
                 <div id="current-task-display" class="empty">&nbsp;</div>
                 
                 <div class="time">
@@ -81,12 +81,12 @@
                 </div>
             </div>
             <div class="main-right" style="width: 50%;padding: 0 15vh;">
-                <!-- ✅ UPDATED: Bigger icons with better layout -->
+                <!-- ✅ UPDATED: Smaller, closer icons -->
                 <div style="display: flex; margin-top: 4.1vh; justify-content: space-between; align-items: center;" id="task-top">
                     <div style="font-size: 4.2vh; width: 14.56vh; letter-spacing: 0.26vh;">TASKS</div>
                     <div class="task-header-icons">
-                        <img class="delete-btn" src="./images/delete.png" alt="Delete all tasks" onclick="deleteAll()">
-                        <img class="add-btn" src="./images/add.png" alt="Add new task" onclick="clickAdd()">
+                        <img class="delete-btn" src="./images/delete.png" alt="Delete all" onclick="deleteAll()">
+                        <img class="add-btn" src="./images/add.png" alt="Add task" onclick="clickAdd()">
                     </div>
                 </div>
                 <div id="task-list" style="font-size: 3.94vh;letter-spacing: 0.3vh; margin-top: 5vh;"></div>
@@ -118,7 +118,7 @@
 
     <script src="./js/index.js"></script>
     <script>
-        // NASA, Quotes, Spotify API code stays exactly the same...
+        // All your existing JavaScript stays exactly the same...
         let usedDates = [];
         let tracksUri = "";
         let accessToken = "";
