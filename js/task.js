@@ -2,7 +2,6 @@ let tasks = [];
 let current = 0;
 let handle = "";
 
-// ✅ UPDATED: Your Railway backend URL
 const BASE_API = "https://orbit20-production-9e31.up.railway.app"
 
 function clickAdd() {
@@ -44,7 +43,7 @@ function existTask() {
     return exist;
 }
 
-// ✅ NEW FUNCTION: Get current active task
+// ✅ Get current active task
 function getCurrentTask() {
     for (let i = 0; i < tasks.length; i++) {
         if (tasks[i].finish < tasks[i].num) {
@@ -54,7 +53,7 @@ function getCurrentTask() {
     return null;
 }
 
-// ✅ NEW FUNCTION: Update current task display
+// ✅ UPDATED: Use opacity to hide/show while keeping space
 function updateCurrentTaskDisplay() {
     const currentTask = getCurrentTask();
     const displayElement = document.querySelector("#current-task-display");
@@ -62,11 +61,11 @@ function updateCurrentTaskDisplay() {
     if (currentTask) {
         // Show task name with progress
         displayElement.innerHTML = `${currentTask.name} (${currentTask.finish}/${currentTask.num})`;
-        displayElement.style.display = "block";
+        displayElement.classList.remove('empty');
     } else {
-        // Hide the text completely when no tasks
-        displayElement.innerHTML = "";
-        displayElement.style.display = "none";
+        // Hide text but keep the space
+        displayElement.innerHTML = "&nbsp;"; // Non-breaking space to maintain height
+        displayElement.classList.add('empty');
     }
 }
 
