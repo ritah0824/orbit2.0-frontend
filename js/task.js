@@ -217,9 +217,9 @@ function renderTasksDom() {
             outputHtml += `</div>`;
         }
         else {
-            // ✅ UPDATED: Added 70% opacity to the entire message
+            // ✅ UPDATED: Added 40% opacity to the entire message
             outputHtml += `
-            <div style="margin-top:25vh; opacity: 0.7;">
+            <div style="margin-top:25vh; opacity: 0.4;">
                 Click <img style="width: 2.682vh;height:2.682vh;margin:0 1vh; cursor: pointer;" src="./images/add.png" alt="" onclick="clickAdd()"> to create new tasks!
             </div>
         `;
@@ -233,3 +233,4 @@ function audioPlay(name) {
     audioDom.src = `./mp3/${name}.mp3`;
     audioDom.play()
 }
+
